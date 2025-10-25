@@ -1,0 +1,12 @@
+{
+	"phone": "",
+	"mail": "",
+	"socials": [
+		{
+			"title": "Instagram",
+			"link": "https://www.instagram.com/pingponggamesstudio",
+			"icon": "mdi:instagram"
+		}
+
+	]
+}

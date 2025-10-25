@@ -1,0 +1,31 @@
+---
+import { type CollectionEntry, getCollection } from "astro:content";
+import type { ButtonProps } from "@/components/primitives/Button.astro";
+import Link from "@/components/primitives/Link.astro";
+import WorkPreview from "@/components/sections/WorkPreview.astro";
+
+const currentLocale = Astro.currentLocale;
+
+const games = await getCollection("games");
+
+const allGames = games
+	.map((game) => {
+		const [lang, ...slug] = game.slug.split("/");
+		return {
+			...game,
+			lang: lang,
+			slug: game.slug.startsWith("/") ? game.slug : `/${game.slug}`,
+		};
+	})
+	.filter((page) => page.lang === currentLocale)
+	.sort(
+		(a, b) =>
+			a.data.lastUpdateDate.getTime() - b.data.lastUpdateDate.getTime(),
+	) as CollectionEntry<"games">[];
+---
+
+<div
+	class="text-sm font-medium auto-cols-fr grid-cols-1 md:grid-cols-2 grid-rows-[auto] grid gap-9 pb-40"
+>
+	{allGames.map((game) => <WorkPreview work={game} />)}
+</div>

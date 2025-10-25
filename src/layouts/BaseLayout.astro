@@ -1,0 +1,48 @@
+---
+import { ViewTransitions } from "astro:transitions";
+import Head from "@/components/Head.astro";
+import Footer from "@/components/footers/Footer.astro";
+import Navigation from "@/components/headers/Navigation.astro";
+import LinesWrapper from "@/components/primitives/LinesWrapper.astro";
+import LoadingIndicator from "@/components/primitives/LoadingIndicator.astro";
+import Widget from "@/components/primitives/Widget.astro";
+import { getLocalizedSettings } from "@/lib/localization-helpers";
+import type { SEOProps } from "astro-seo";
+
+const currentLocale = Astro.currentLocale;
+
+const { widget } = getLocalizedSettings(currentLocale);
+
+type Props = {
+	seo?: SEOProps | MinimalSeo;
+};
+
+const { seo } = Astro.props;
+---
+
+<html lang={currentLocale}>
+	<Head seo={seo}>
+		<ViewTransitions />
+		<script is:inline>
+			// Initialize dark mode before page renders (default: dark)
+			(function () {
+				const theme = localStorage.getItem("theme");
+
+				// Default to dark mode if no preference is set
+				if (theme === "dark" || !theme) {
+					document.documentElement.classList.add("dark");
+				} else {
+					document.documentElement.classList.remove("dark");
+				}
+			})();
+		</script>
+	</Head>
+	<body class="bg-white dark:bg-black text-black dark:text-white transition-colors duration-200">
+		<LoadingIndicator />
+		<LinesWrapper />
+		<Navigation showTopBar />
+		<slot />
+		{widget.enabled && <Widget />}
+		<Footer />
+	</body>
+</html>
