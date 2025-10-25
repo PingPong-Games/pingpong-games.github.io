@@ -40,11 +40,25 @@ const baseSeo: SEOProps = {
 		},
 		optional: {
 			description: seoProp?.description ?? defaultSeo.description,
-			siteName: seoProp?.title ?? defaultSeo.title,
+			siteName: "PingPong Games Studio",
+			locale: "en_US",
+		},
+		image: {
+			url: shareImage,
+			secureUrl: shareImage,
+			type: "image/png",
+			width: 1200,
+			height: 630,
+			alt: seoProp?.title ?? defaultSeo.title,
 		},
 	},
 	twitter: {
-		site: canonicalURL,
+		card: "summary_large_image",
+		site: "@PingPongGames",
+		creator: "@PingPongGames",
+		title: seoProp?.title ?? defaultSeo.title,
+		description: seoProp?.description ?? defaultSeo.description,
+		image: shareImage,
 	},
 	extend: {
 		meta: [

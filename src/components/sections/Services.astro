@@ -32,7 +32,7 @@ const images = import.meta.glob<{ default: ImageMetadata }>(
 						<Image
 							src={images[icon]()}
 							alt={`Service ${title}`}
-							class="align-middle inline-block w-12 h-12 max-w-full"
+							class="align-middle inline-block w-12 h-12 max-w-full dark:invert"
 						/>
 						<div class="mt-16 text-[1.38rem] leading-7 font-semibold">
 							<h3 class="mb-3">{title}</h3>

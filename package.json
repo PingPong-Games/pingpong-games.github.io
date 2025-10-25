@@ -5,16 +5,17 @@
 	"private": true,
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/majesticooss/mizar.git"
+		"url": "https://github.com/PingPong-Games/pingpong-games.github.io.git"
 	},
-	"bugs": "https://github.com/majesticooss/mizar/issues",
-	"homepage": "https://github.com/majesticooss/mizar",
+	"bugs": "https://github.com/PingPong-Games/pingpong-games.github.io/issues",
+	"homepage": "https://pingpong-games.github.io",
 	"scripts": {
 		"dev": "astro dev",
 		"start": "astro dev",
 		"build": "astro build",
 		"preview": "astro preview",
 		"astro": "astro",
+		"deploy": "astro build && gh-pages -d dist -t",
 		"wrangler:dev": "wrangler pages dev",
 		"pwa:generate-assets": "pwa-assets-generator --preset minimal public/logo.svg"
 	},
@@ -42,6 +43,7 @@
 		"@biomejs/biome": "1.7.3",
 		"@bobthered/tailwindcss-palette-generator": "^3.2.3",
 		"@cloudflare/workers-types": "^4.20240524.0",
+		"gh-pages": "^6.1.1",
 		"@iconify-json/ic": "^1.1.17",
 		"@iconify-json/iconamoon": "^1.1.4",
 		"@iconify-json/mdi": "^1.1.66",

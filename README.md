@@ -54,6 +54,14 @@ The built site will be in the `dist/` directory.
 bun run preview
 ```
 
+### Deploy to GitHub Pages
+
+```bash
+bun run deploy
+```
+
+This will build and deploy your site to GitHub Pages automatically. See `DEPLOYMENT.md` for full deployment instructions.
+
 ---
 
 ## 🛠️ Tech Stack
@@ -123,12 +131,19 @@ For more information, see the [Keystatic documentation](https://keystatic.com/do
 
 ## 🌐 Deployment
 
-This site can be deployed to any static hosting platform:
+The site is configured to deploy to **GitHub Pages** using the `gh-pages` package.
 
-- **Netlify:** [![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/yourusername/yourrepo)
-- **Vercel:** [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/yourusername/yourrepo)
-- **Cloudflare Pages**
-- **GitHub Pages**
+**Quick Deploy:**
+```bash
+bun run deploy
+```
+
+For detailed deployment instructions, see [DEPLOYMENT.md](./DEPLOYMENT.md).
+
+**Alternative hosting platforms:**
+- Netlify
+- Vercel
+- Cloudflare Pages
 
 ---
 

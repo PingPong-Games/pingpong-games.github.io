@@ -6,16 +6,16 @@ const currentLocale = Astro.currentLocale;
 const { footer } = getLocalizedSettings(currentLocale);
 ---
 
-<footer class="bg-black dark:bg-black py-8 px-6">
+<footer class="bg-white dark:bg-neutral-900 py-8 px-6">
 	<div class="max-w-7xl mx-auto flex flex-col items-center justify-center gap-4">
 		<a href="/" class="inline-block">
 			<img
 				src="/logo.png"
 				alt="Company Logo"
-				class="w-12 h-12 object-contain brightness-0 invert"
+				class="w-12 h-12 object-contain dark:brightness-0 dark:invert"
 			/>
 		</a>
-		<p class="text-white/60 text-sm text-center">
+		<p class="text-black/60 dark:text-white/60 text-sm text-center">
 			{footer.copyright}
 		</p>
 	</div>

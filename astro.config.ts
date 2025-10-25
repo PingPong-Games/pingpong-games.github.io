@@ -1,5 +1,4 @@
 import alpinejs from "@astrojs/alpinejs";
-import cloudflare from "@astrojs/cloudflare";
 import markdoc from "@astrojs/markdoc";
 import react from "@astrojs/react";
 import sitemap from "@astrojs/sitemap";
@@ -14,13 +13,7 @@ import { siteTitle, siteUrl } from "./site.config";
 // https://astro.build/config
 export default defineConfig({
 	site: siteUrl,
-	output: "hybrid",
-	adapter: cloudflare({
-		imageService: "compile",
-		experimental: {
-			manualChunks: ["sharp"],
-		},
-	}),
+	output: "static",
 	compressHTML: true,
 	i18n: {
 		defaultLocale: "en",
@@ -44,7 +37,8 @@ export default defineConfig({
 		icon(),
 		react(),
 		markdoc(),
-		keystatic(),
+		// Keystatic only works in development mode for static sites
+		...(import.meta.env.DEV ? [keystatic()] : []),
 		robotsTxt({
 			policy: [{ userAgent: "*", allow: "/" }],
 		}),
